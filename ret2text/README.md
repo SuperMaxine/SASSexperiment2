@@ -51,7 +51,9 @@
 2. 覆盖`main()`函数的返回地址为`system("/bin/sh")`语句的地址。
 3. 当`main()`函数执行完毕退出时，eip指针返回到`system("/bin/sh")`语句的地址继续执行，从而弹出一个shell供攻击者使用。
 
-接下来实现攻击，首先要确定返回地址的存储位置。
+### 攻击复现
+
+接下来实现攻击，首先要确定`main()`函数返回地址的存储位置。
 
 由`get(s)`汇编代码得知，`s`在堆栈上的位置是相对esp寄存器计算的，所以需要通过调试确定在`call _gets`时esp的地址。
 
@@ -61,9 +63,13 @@
 
 通过在`call _gets`的地址`0x080486AE`处下断点，可以看到：栈指针寄存器esp此时的地址为`0xffffcf00`，其存放的内容即字符串`s`的地址为`0xffffcf1c`；基址指针寄存器ebp的地址为`0xffffcf88`。通过计算可得，s 相对于 ebp 的偏移为 `0xffffcf88-0xffffcf1c=0x6c`。此时内存结构如下图所示：
 
-![image-20230417221227687](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304172212724.png)
+![image-20230418171910241](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304181719277.png)
 
-接下来编写的payload要做的就是通过`gets()`函数在`s`字符串地址开始写入，覆盖ebp，最终改写`main()`函数的返回地址为上面所记录的`system(\bin\sh)`的地址`0x804863A`。最后的payload如下：
+接下来编写的payload要做的就是通过`gets()`函数在`s`字符串地址开始写入0x6c长度任意数据，覆盖ebp（4个字节），最终改写`main()`函数的返回地址为上面所记录的`system(\bin\sh)`的地址`0x804863A`。如下图所示：
+
+![image-20230419120108185](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304191201222.png)
+
+最后的payload如下：
 
 ```python
 from pwn import *
