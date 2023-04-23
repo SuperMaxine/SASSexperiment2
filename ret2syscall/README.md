@@ -5,7 +5,7 @@
 - checksec检查可执行文件与内核安全属性
 - 使用反汇编工具（IDA pro）查找缓冲区溢出入口和可利用的源码片段
 - 使用二进制调试工具（gdb）查看寄存器与内存内容
-- 利用gadgets构造ROP调用系统调用
+- 利用gadgets构造栈帧，通过ROP调用系统调用
 - 通过ROPgadget工具查找需要的gadgets
 - 计算需要覆写的返回地址的偏移
 - payload构造
