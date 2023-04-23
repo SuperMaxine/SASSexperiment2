@@ -67,7 +67,7 @@
 
 接下来编写的payload要做的就是通过`gets()`函数在`s`字符串地址开始写入0x6c长度任意数据，覆盖ebp（4个字节），最终改写`main()`函数的返回地址为上面所记录的`system(\bin\sh)`的地址`0x804863A`。如下图所示：
 
-![image-20230419120108185](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304191201222.png)
+![image-20230423115955380](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304231159405.png)
 
 最后的payload如下：
 

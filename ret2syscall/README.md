@@ -76,7 +76,21 @@ execve("/bin/sh",NULL,NULL)
 
 ### 攻击复现
 
-接下来实现攻击，根据上述思路编写payload：
+接下来实现攻击，同上一两题，要先确定`main()`函数返回地址。
+
+![image-20230423115452588](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304231154606.png)
+
+![image-20230423115621344](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304231156384.png)
+
+使用与上一题一样的步骤，在`call _gets`的地址`0x08048E96`处下断点，可以看到：栈指针寄存器esp此时的地址为`0xffffcf20`，其存放的内容即字符串`s`的地址为`0xffffcf3c`；基址指针寄存器ebp的地址为`0xffffcfab`。通过计算可得，s 相对于 ebp 的偏移为 `0xffffcfab-0xffffcf3c=0x6c`。此时内存结构如下图所示：
+
+![image-20230423120021465](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304231200493.png)
+
+根据上述思路编写payload，构造内存结果如下：
+
+![image-20230423165859531](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304231658591.png)
+
+最后的payload如下：
 
 ```python
 #!/usr/bin/env python
