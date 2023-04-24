@@ -68,7 +68,7 @@
 
 根据上述思路编写payload，构造内存结果如下：
 
-![image-20230424154954650](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304241549688.png)
+![image-20230424222956778](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304242229806.png)
 
 最后的payload如下：
 
