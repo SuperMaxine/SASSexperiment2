@@ -32,7 +32,7 @@
 
 ![image-20230419183214617](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304191832640.png)
 
-没有可以利用的代码也无法自己输入shellcode来获得shell，因此考虑使用ROP(Return Oriented Programming)方法，利用程序中已有的以`ret`结尾的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。
+没有可以利用的代码也无法自己输入shellcode来获得shell，因此考虑使用ROP(Return Oriented Programming)方法，利用程序中已有的以`ret`结尾的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而利用`ret`控制子程序返回栈上原主程序地址的特性，达到连续执行多个gadgets控制程序的执行流程。
 
 希望能够构造出系统调用如下：
 
@@ -70,11 +70,18 @@ execve("/bin/sh",NULL,NULL)
 因此构思获得shell的攻击流程如下：
 
 1. 通过`gets()`构造缓冲区溢出攻击，劫持控制流。
+
 2. 覆盖`main()`函数的返回地址为控制eax的gadget地址
+
 3. 在栈中后续内容继续填充希望`pop`进eax寄存器的内容`0xb`
+
 4. 在栈中后续内容（控制eax的gadget的ret地址）继续填充为控制ebx、ecx和edx寄存器的gadget地址
+
 5. 在栈中后续内容继续填充希望`pop`进ebx、ecx、edx寄存器的内容`0`、`0`和字符串“/bin/sh”的地址`0x080be408`
+
 6. 在栈中后续内容（控制ebx、ecx、edx的gadget的ret地址）继续填充为`int 0x80`的地址
+
+   当`main()`函数执行完毕退出时，eip指针返回到第一个gadget的地址并依次执行后续gadget，从而依次满足寄存器内容并最终发起系统中断从而调用`execve`弹出一个shell供攻击者使用
 
 ### 攻击复现
 
@@ -95,7 +102,6 @@ execve("/bin/sh",NULL,NULL)
 最后的payload如下：
 
 ```python
-#!/usr/bin/env python
 from pwn import *
 
 sh = process('./ret2syscall')
