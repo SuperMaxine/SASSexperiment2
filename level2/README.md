@@ -23,9 +23,9 @@
 
 能够得知以下信息：
 
-- 可执行文件为是一个64位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个64位可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 开启了“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 

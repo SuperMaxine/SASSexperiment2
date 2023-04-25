@@ -19,9 +19,9 @@
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术，在重定位后使可执行文件的某些部分（如全局偏移表（GOT）和程序链接表（PLT））成为只读，可以一定程度上防止重写函数指针和劫持控制流。
-- 没有开启“堆栈金丝雀（stack canary）”技术，说明可执行程序易受到堆栈缓冲区溢出的影响。
+- 没有开启“栈金丝雀（stack canary）”技术，说明可执行程序易受到栈缓冲区溢出的影响。
 - 开启了“No-eXecute”保护技术，将一些内存区域（如堆栈）标记为不可执行。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术，说明可执行文件运行时都在固定的位置加载。
 
@@ -105,9 +105,9 @@ sh.interactive()
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 没有开启“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 
@@ -185,9 +185,9 @@ sh.interactive()
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 开启了“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 
@@ -304,9 +304,9 @@ sh.interactive()
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 开启了“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 
@@ -395,9 +395,9 @@ sh.interactive()
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 开启了“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 
@@ -485,9 +485,9 @@ sh.interactive()
 
 能够得知以下信息：
 
-- 可执行文件为是一个32位的英特尔x86可执行文件，使用小端序编码。
+- 可执行文件为一个32位的英特尔x86可执行文件，使用小端序编码。
 - 开启了“部分Relocation Read-Only”技术。
-- 没有开启“堆栈金丝雀（stack canary）”技术。
+- 没有开启“栈金丝雀（stack canary）”技术。
 - 开启了“No-eXecute”保护技术。
 - 没有开启“独立位置可执行（Position Independent Executable）”技术。
 
