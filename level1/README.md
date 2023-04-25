@@ -532,9 +532,9 @@ sh.interactive()
 
 根据上述思路编写第一轮运行的payload，构造内存结果如下：
 
-![image-20230424223159342](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304251054019.png)
+![image-20230425154007262](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304251540314.png)
 
-接下来因为程序重新从main开始运行，因此继续需要继续构造第二轮运行的payload，需构造内存结果如下：
+接下来因为程序重新从main开始运行，因此需要继续构造第二轮运行的payload，需构造内存结果如下：
 
 ![image-20230424223330737](https://raw.githubusercontent.com/SuperMaxine/pic-repo/master/img/202304251054888.png)
 
