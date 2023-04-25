@@ -2,3 +2,13 @@
 *.html
 *.i64
 *.mkv
+level1/ret2libc/ret2libc3/libc-database/*
+level1/ret2libc/ret2libc3/__pycache__/*
+level1/ret2libc/ret2libc3/LibcSearcher.egg-info/*
+level1/ret2libc/ret2libc3/setup.py
+level2/libc-database/*
+level2/__pycache__/*
+level2/LibcSearcher.egg-info/*
+level2/setup.py
+libc.so.6
+core
